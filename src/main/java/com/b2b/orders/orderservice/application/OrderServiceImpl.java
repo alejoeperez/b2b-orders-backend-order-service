@@ -5,7 +5,9 @@ import com.b2b.orders.orderservice.api.dto.CreateOrderRequest;
 import com.b2b.orders.orderservice.domain.Order;
 import com.b2b.orders.orderservice.domain.OrderItem;
 import com.b2b.orders.orderservice.domain.OrderRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -60,7 +62,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderById(String orderId) {
         return orderRepository.findById(orderId)
-                .orElseThrow( () -> new IllegalArgumentException("Order not found: " + orderId));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found: " + orderId));
     }
 
     @Override
