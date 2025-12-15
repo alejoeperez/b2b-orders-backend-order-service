@@ -52,15 +52,15 @@ public class OrderItem {
             throw new IllegalArgumentException("quantity must be greater than 0");
         }
         if(unitPrice == null || unitPrice.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("unitPrice must be greater than 0");
+            throw new IllegalArgumentException("unitPrice must exist and be greater than 0");
         }
         if(taxPercent == null || taxPercent.compareTo(BigDecimal.ZERO) < 0
                 || taxPercent.compareTo(BigDecimal.valueOf(100)) > 0 ) {
-            throw new IllegalArgumentException("taxPercent must be between 0 and 100");
+            throw new IllegalArgumentException("taxPercent must exist and be between 0 and 100");
         }
         if(discountPercent == null || discountPercent.compareTo(BigDecimal.ZERO) < 0
                 || discountPercent.compareTo(BigDecimal.valueOf(100)) > 0 ) {
-            throw new IllegalArgumentException("discountPercent must be between 0 and 100");
+            throw new IllegalArgumentException("discountPercent must exist and be between 0 and 100");
         }
 
         BigDecimal quantityBd = BigDecimal.valueOf(quantity);

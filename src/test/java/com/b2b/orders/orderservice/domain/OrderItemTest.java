@@ -61,4 +61,17 @@ public class OrderItemTest {
         );
     }
 
+    @Test
+    void create_shouldFail_whenProductNameIsBlank(){
+        String productId = "P-100";
+        String productName = "";
+        BigDecimal unitPrice = BigDecimal.valueOf(100);
+        BigDecimal taxPercent = BigDecimal.valueOf(19);
+        BigDecimal discountPercent = BigDecimal.ZERO;
+
+        //when + then
+        assertThrows(IllegalArgumentException.class, () ->
+                OrderItem.create(productId, productName, 1, unitPrice, taxPercent, discountPercent));
+    }
+
 }

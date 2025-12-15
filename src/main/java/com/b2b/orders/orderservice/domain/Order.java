@@ -101,4 +101,11 @@ public class Order {
         this.status = OrderStatus.CANCELLED;
 
     }
+
+    public void changeStatus(OrderStatus status) {
+
+        if(status == OrderStatus.CANCELLED) return;
+
+        this.status = status;
+    }
 }
